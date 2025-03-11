@@ -5,17 +5,18 @@ package ArrayIntList;
 import java.util.*;
 
 public class ArrayIntList4 {
+    public static final int DEFAULT_CAPACITY = 100;
+    private int[] elementData; // list of integers
+    private int size;          // current number of elements in the list
 
-
-public int sum() {
+    public int sum() {
     int total = 0;
     for (int i = 0; i < size; i++) {
         total += elementData[i];
     }
     return total;
 }
-
-public double average() {
+    public double average() {
     if (isEmpty()) {
         return 0.0;
     } else {
@@ -23,21 +24,14 @@ public double average() {
     }
 }
 
-
-
-    private int[] elementData; // list of integers
-    private int size;          // current number of elements in the list
-
-    public static final int DEFAULT_CAPACITY = 100;
-
     // post: constructs an empty list of default capacity
-    public ArrayIntList() {
+    public ArrayIntList4() {
         this(DEFAULT_CAPACITY);
     }
 
     // pre : capacity >= 0 (throws IllegalArgumentException if not)
     // post: constructs an empty list with the given capacity
-    public ArrayIntList(int capacity) {
+    public ArrayIntList4(int capacity) {
         if (capacity < 0) {
             throw new IllegalArgumentException("capacity: " + capacity);
         }
@@ -142,7 +136,7 @@ public double average() {
     // pre: size() + other.size() <= capacity (throws IllegalStateException
     //      if not)
     // post: appends all values in the given list to the end of this list
-    public void addAll(ArrayIntList other) {
+    public void addAll(ArrayIntList4 other) {
         ensureCapacity(size + other.size);
         for (int i = 0; i < other.size; i++) {
             add(other.elementData[i]);
@@ -150,9 +144,9 @@ public double average() {
     }
 
     // post: returns an iterator for this list
-    public ArrayIntListIterator iterator() {
-        return new ArrayIntListIterator(this);
-    }
+//    public ArrayIntListIterator iterator() {
+//        return new ArrayIntListIterator(this);
+//    }
 
     // post: ensures that the underlying array has the given capacity; if not,
     //       the size is doubled (or more if given capacity is even larger)

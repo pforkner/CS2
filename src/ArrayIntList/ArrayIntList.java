@@ -31,6 +31,10 @@ public class ArrayIntList {
         size++;
     }
 
+    public int get(int index) {
+        return elementData[index];
+    }
+
     public void remove(int index) {
         for (int i = index; i < size - 1; i++) {
             elementData[i] = elementData[i + 1];
@@ -54,11 +58,19 @@ public class ArrayIntList {
 
     public void ensureCapacity(int capacity) {
         if (capacity > elementData.length) {
-            int[] newArray = new int[elementData.length*2 + 1];
+            int newCapacity = elementData.length*2 + 1;
+            if (newCapacity < capacity) {
+                newCapacity = capacity;
+            }
+            int[] newArray = new int[newCapacity];
             for (int i = 0; i < elementData.length; i++) {
                 newArray[i] = elementData[i];
             }
             elementData = newArray;
         }
+    }
+
+    public void mergeFrom(ArrayIntList other) {
+
     }
 }
