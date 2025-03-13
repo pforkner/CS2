@@ -16,5 +16,6 @@ public class FinalExamPractice {
         a2.add(98);
         System.out.println(a1);
         System.out.println(a2);
+        a1.mergeFrom(a2);
     }
 }
