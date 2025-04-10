@@ -1,3 +1,5 @@
+package OOPReview;
+
 public class Triangle extends Polygon{
     double a;
     double b;
@@ -10,7 +12,7 @@ public class Triangle extends Polygon{
     }
 
     public String toString() {
-        return "Triangle: " + a + " " + b + " " + c;
+        return "OOPReview.Triangle: " + a + " " + b + " " + c;
     }
 
     public Triangle(double a, double b, double c) {

@@ -1,3 +1,5 @@
+package OOPReview;
+
 public class Polygon extends Object {
     private int sides;
 
@@ -11,7 +13,7 @@ public class Polygon extends Object {
 
     @Override
     public String toString() {
-        return "Polygon [sides=" + sides + "]";
+        return "OOPReview.Polygon [sides=" + sides + "]";
     }
 
 }

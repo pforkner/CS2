@@ -1,10 +1,12 @@
+package OOPReview;
+
 public class Rectangle extends Polygon {
     double width;
     double height;
 
     @Override
     public String toString() {
-        return "Rectangle: width = " + width + " height = " + height;
+        return "OOPReview.Rectangle: width = " + width + " height = " + height;
     }
 
     public double getArea() {

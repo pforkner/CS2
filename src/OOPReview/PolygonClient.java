@@ -1,3 +1,5 @@
+package OOPReview;
+
 public class PolygonClient {
     public static void main(String[] args) {
         Polygon p1 = new Polygon(4);
@@ -21,7 +23,7 @@ public class PolygonClient {
             System.out.println(p);
         }
 
-//        System.out.println(((Triangle)p2).getArea());
+//        System.out.println(((OOPReview.Triangle)p2).getArea());
         System.out.println(((Polygon)t1).toString());
 
         double x = 3.24;
