@@ -15,6 +15,10 @@ public class ArrayIntListClient {
         System.out.println(a1);
         a1.remove(0);
         System.out.println(a1);
+        a1.add(1, 7);
+        System.out.println(a1);
+        a1.clear();
+        System.out.println(a1);
 
     }
 }
