@@ -25,7 +25,6 @@ public class ArrayIntList {
         }
     }
 
-
     public void add(int value) {
         add(size, value);
 //        ensureCapacity(size + 1);
@@ -113,7 +112,7 @@ public class ArrayIntList {
         }
     }
     
-    public int longestSortedSequence1() {
+    public int longestSortedSequence() {
         int longest = 0;
         int currentCount = 1;
         for (int i = 0; i < size - 1; i++) {
