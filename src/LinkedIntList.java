@@ -1,64 +1,169 @@
-public class LinkedIntList {
-    Node front;
+// Class LinkedIntList can be used to store a list of integers.
 
-    // private inner class
-    private class Node {
-        int data;
-        Node next;
+public class LinkedIntList {
+    private ListNode front;  // first value in the list
+
+    // post: constructs an empty list
+    public LinkedIntList() {
+        front = null;
     }
 
-    public void add(int n) {
-        Node newNode = new Node();
-        newNode.data = n;
+    // post: returns the current number of elements in the list
+    public int size() {
+        int count = 0;
+        ListNode current = front;
+        while (current != null) {
+            current = current.next;
+            count++;
+        }
+        return count;
+    }
+
+    // pre : 0 <= index < size()
+    // post: returns the integer at the given index in the list
+    public int get(int index) {
+        return nodeAt(index).data;
+    }
+
+    // post: creates a comma-separated, bracketed version of the list
+    public String toString() {
         if (front == null) {
-            front = newNode;
+            return "[]";
         } else {
-            Node current = front;
+            String result = "[" + front.data;
+            ListNode current = front.next;
+            while (current != null) {
+                result += ", " + current.data;
+                current = current.next;
+            }
+            result += "]";
+            return result;
+        }
+    }
+
+    // post : returns the position of the first occurrence of the given
+    //        value (-1 if not found)
+    public int indexOf(int value) {
+        int index = 0;
+        ListNode current = front;
+        while (current !=  null) {
+            if (current.data == value) {
+                return index;
+            }
+            index++;
+            current = current.next;
+        }
+        return -1;
+    }
+
+    // post: appends the given value to the end of the list
+    public void add(int value) {
+        if (front == null) {
+            front = new ListNode(value);
+        } else {
+            ListNode current = front;
             while (current.next != null) {
                 current = current.next;
             }
-            current.next = newNode;
+            current.next = new ListNode(value);
         }
     }
 
-    // index must be less than size - 1
-    public void add(int index, int n) {
-        Node newNode = new Node();
-        newNode.data = n;
+    // pre: 0 <= index <= size()
+    // post: inserts the given value at the given index
+    public void add(int index, int value) {
         if (index == 0) {
-            newNode.next = front;
-            front = newNode;
+            front = new ListNode(value, front);
         } else {
-            Node current = front;
-            for (int i = 0; i < index - 1; i++) {
-                current = current.next;
-            }
-            newNode.next = current.next;
-            current.next = newNode;
+            ListNode current = nodeAt(index - 1);
+            current.next = new ListNode(value, current.next);
         }
     }
 
+    // pre : 0 <= index < size()
+    // post: removes value at the given index
     public void remove(int index) {
         if (index == 0) {
             front = front.next;
         } else {
-            Node current = front;
-            for (int i = 0; i < index - 1; i++) {
-                current = current.next;
-            }
+            ListNode current = nodeAt(index - 1);
             current.next = current.next.next;
         }
     }
 
-    public String toString() {
-        if (front == null) return "[]";
-        String result = "[";
-        Node current = front;
-        while (current.next != null) {
-            result += current.data + ", ";
+    // pre : 0 <= i < size()
+    // post: returns a reference to the node at the given index
+    private ListNode nodeAt(int index) {
+        ListNode current = front;
+        for (int i = 0; i < index; i++) {
             current = current.next;
         }
-        result += current.data + "]";
-        return result;
+        return current;
+    }
+
+    // YOUR CODE GOES HERE
+    public boolean equals2(LinkedIntList other) {
+        if (size() != other.size()) {
+            return false;
+        }
+        ListNode current = front;
+        ListNode otherCurrent = other.front;
+        while (current != null && otherCurrent != null) {
+            if (current.data != otherCurrent.data) {
+                return false;
+            }
+            current = current.next;
+            otherCurrent = otherCurrent.next;
+        }
+        // if we made it this far, they must be equal
+        return true;
+    }
+
+    public void removeAll(int target) {
+        if (front != null) {
+            ListNode current = front;
+            while (current.next != null) {
+                if (current.next.data == target) {
+                    current.next = current.next.next;
+                } else {
+                    current = current.next;
+                }
+            }
+            if (front.data == target) {
+                front = front.next;
+            }
+        }
+    }
+
+    public void switchPairs() {
+        if(front != null && front.next != null) {
+            // swap the first two nodes
+            ListNode temp = front.next;
+            front.next = front.next.next;
+            temp.next = front;
+            front = temp;
+            ListNode current = front.next;
+            while (current.next != null && current.next.next != null) {
+                temp = current.next;
+                current.next = current.next.next;
+                temp.next = current.next.next;
+                current.next.next = temp;
+                current = temp;
+            }
+        }
+    }
+
+    public void removeDuplicates() {
+        if (front != null) {
+            ListNode current = front;
+            while (current != null && current.next != null) {
+                if (current.data == current.next.data) {
+                    current.next = current.next.next;
+                } else {
+                    current = current.next;
+                }
+            }
+        }
     }
 }
+
