@@ -1,3 +1,5 @@
+package ArrayLists;
+
 public class ArrayIntListClient {
     public static void main(String[] args) {
         ArrayIntList a1 = new ArrayIntList();

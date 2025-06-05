@@ -1,9 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
+package ArrayLists;
 
 public class ArrayIntListExamples {
     public static void main(String... args) {
-//        ArrayIntList list = new ArrayIntList(14, 5, -1, 7, 14, 7, 7, 29, 3, 7);
+//        ArrayLists.ArrayIntList list = new ArrayLists.ArrayIntList(14, 5, -1, 7, 14, 7, 7, 29, 3, 7);
 //        System.out.println(list);
 //        list.removeAll(7);
 //        System.out.println(list);

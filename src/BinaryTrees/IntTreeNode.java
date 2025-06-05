@@ -1,3 +1,6 @@
+package BinaryTrees;
+
+
 // Class for storing a single node of a binary tree of ints
 
 public class IntTreeNode {

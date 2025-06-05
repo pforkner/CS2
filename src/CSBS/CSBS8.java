@@ -1,3 +1,7 @@
+package CSBS;
+
+import LinkedLists.LinkedIntList;
+
 public class CSBS8 {
     public static void main(String[] args) {
         int[] a = {3, 3, 9, 4, 2, 3, 8, 17, 4, 3, 18, 3};

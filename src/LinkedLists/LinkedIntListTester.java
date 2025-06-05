@@ -1,3 +1,5 @@
+package LinkedLists;
+
 public class LinkedIntListTester {
     public static void main(String[] args) {
         LinkedIntList list1 = new LinkedIntList();

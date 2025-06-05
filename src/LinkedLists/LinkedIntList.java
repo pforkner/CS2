@@ -1,4 +1,4 @@
-// Class LinkedIntList can be used to store a list of integers.
+package LinkedLists;// Class LinkedLists.LinkedIntList can be used to store a list of integers.
 
 public class LinkedIntList {
     private ListNode front;  // first value in the list
@@ -164,6 +164,60 @@ public class LinkedIntList {
                 }
             }
         }
+    }
+
+    public void mergeFrom(LinkedIntList other) {
+        if (front == null) { // if this list is empty, just add the other list
+            front = other.front;
+            other.front = null;
+        } else if (other.front == null) {
+            // do nothing
+        } else {
+            // handle the front of the list separately
+            while (other.front != null && other.front.data < front.data) {
+                ListNode temp = front;
+                front = other.front;
+                other.front = other.front.next;
+                front.next = temp;
+            }
+            /* optimized front of the list
+            if (other.front.data < front.data) {
+                // skip forward to the point of insertion
+                ListNode otherCurrent = other.front;
+                while (otherCurrent.next != null && otherCurrent.next.data < front.data) {
+                    otherCurrent = otherCurrent.next;
+                }
+                ListNode temp = front;
+                front = other.front;
+                other.front = otherCurrent.next;
+                otherCurrent.next = temp;
+            }
+
+
+             */
+            // handle the middle of the list
+            ListNode current = front;
+            while (current.next != null && other.front != null) {
+                if (other.front.data < current.next.data) {
+                    ListNode temp = current.next;
+                    current.next = other.front;
+                    other.front = other.front.next;
+                    current.next.next = temp;
+                    current = current.next;
+                } else {
+                    current = current.next;
+                }
+            }
+            // handle whatever's left of the other list
+//            while (other.front != null) {
+//                current.next = other.front;
+//                other.front = other.front.next;
+//            }
+            current.next = other.front;
+            other.front = null;
+        }
+
+
     }
 }
 
